@@ -26,6 +26,7 @@ primrec disjunction_atomic :: "'b list \<Rightarrow>'a \<Rightarrow> ('a \<times
  "disjunction_atomic [] i = FF"   
 | "disjunction_atomic (x#D) i = (atom (i, x)) \<or>. (disjunction_atomic D i)"
 
+(* Mover para otra teoria*)
 
 lemma t_v_evaluation_disjunctions1:
   assumes "t_v_evaluation I (disjunction_atomic (a # l) i) = Ttrue"
@@ -38,7 +39,7 @@ proof-
     using assms by auto
   thus ?thesis using ValoresDisyuncion by blast
 qed
-(* El siguiente lema se utiliza más adelante para demostrar el lema  existence_representantsn*)
+
 lemma t_v_evaluation_atom:
   assumes "t_v_evaluation I (disjunction_atomic l i) = Ttrue"
   shows "\<exists>x. x \<in> set l \<and> (t_v_evaluation I (atom (i,x)) = Ttrue)"
